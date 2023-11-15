@@ -95,6 +95,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _searchList() {
+    _controller.onSearchChange("");
     return StreamBuilder<List<CustomCard>>(
         stream: _controller.listState,
         initialData: [],

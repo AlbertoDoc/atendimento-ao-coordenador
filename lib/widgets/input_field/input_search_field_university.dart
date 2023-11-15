@@ -22,7 +22,7 @@ class InputSearchFieldUniversity extends StatelessWidget {
       keyboardType: TextInputType.visiblePassword,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-        hintText: 'Buscar Médicos...',
+        hintText: 'Buscar Coordenador...',
         hintStyle: TextStyles.hintField,
         enabledBorder: _setBorder(color: AttendColors.input_border),
         focusedBorder: _setBorder(color: AttendColors.main_primary),
