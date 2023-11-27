@@ -81,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                   },
                   child: Text(
                     "Entrar",
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(fontSize: 18, color: Colors.white),
                   ))
             ],
           ),

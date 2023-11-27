@@ -15,7 +15,8 @@ class LoginService {
 
     if (response.statusCode == 200) {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.setString('id', jsonDecode(response.body)["data"]["id"]);
+      await prefs.setString(
+          'id', jsonDecode(response.body)["data"]["patientId"]);
     }
 
     return response.statusCode;

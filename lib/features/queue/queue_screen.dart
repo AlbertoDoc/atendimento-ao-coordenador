@@ -57,29 +57,32 @@ class _QueuePageState extends State<QueuePage> {
         stream: _controller.universityInfoState,
         builder: (context, snapshot) {
           final university = snapshot.data;
-          return Column(
-            children: [
-              Text(
-                university == null ? "" : university.name,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(university == null ? "" : university.address),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.phone),
-                  Text(
-                    university == null ? "" : university.phone,
-                  )
-                ],
-              )
-            ],
+          return Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16),
+            child: Column(
+              children: [
+                Text(
+                  university == null ? "" : university.name,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(university == null ? "" : university.address),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.phone),
+                    Text(
+                      university == null ? "" : university.phone,
+                    )
+                  ],
+                )
+              ],
+            ),
           );
         });
   }
@@ -179,9 +182,7 @@ class _QueuePageState extends State<QueuePage> {
                     borderRadius: BorderRadius.circular(20),
                     side: BorderSide(color: AttendColors.unity_container)))),
             onPressed: () {
-              QueueService.enterInQueue(
-                      lineId, "e3a3bd68-c460-49ea-b19f-20ae98e766be")
-                  .then((statusCode) {
+              QueueService.enterInQueue(lineId).then((statusCode) {
                 if (statusCode == 201) {
                   _controller.onStudentListChange(
                       widget.universityId, widget.coordinatorId);
@@ -193,7 +194,7 @@ class _QueuePageState extends State<QueuePage> {
             },
             child: Text(
               "ENTRAR NA FILA",
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 18, color: Colors.white),
             )),
       ),
     );

@@ -2,10 +2,14 @@ import 'dart:convert';
 
 import 'package:attend/services/API.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class QueueService {
-  static Future<int> enterInQueue(String lineId, String studentId) async {
+  static Future<int> enterInQueue(String lineId) async {
     int statusCode = -1;
+
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var studentId = prefs.getString("id");
 
     await http
         .post(

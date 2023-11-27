@@ -50,29 +50,32 @@ class _UniversityOverviewPageState extends State<UniversityOverviewPage> {
         stream: _controller.universityInfoState,
         builder: (context, snapshot) {
           final university = snapshot.data;
-          return Column(
-            children: [
-              Text(
-                university == null ? "" : university.name,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(university == null ? "" : university.address),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.phone),
-                  Text(
-                    university == null ? "" : university.phone,
-                  )
-                ],
-              )
-            ],
+          return Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16),
+            child: Column(
+              children: [
+                Text(
+                  university == null ? "" : university.name,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(university == null ? "" : university.address),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.phone),
+                    Text(
+                      university == null ? "" : university.phone,
+                    )
+                  ],
+                )
+              ],
+            ),
           );
         });
   }
@@ -92,7 +95,7 @@ class _UniversityOverviewPageState extends State<UniversityOverviewPage> {
   }
 
   Widget _coordinatorsList() {
-    return StreamBuilder(
+    return StreamBuilder<List<Coordinator>>(
         stream: _controller.coordinatorListState,
         initialData: [],
         builder: (context, snapshot) {

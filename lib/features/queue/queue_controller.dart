@@ -49,7 +49,6 @@ class QueueImpl extends QueueController {
   @override
   void onCoordinatorNameChange(String universityId, String coordinatorId) {
     LineService.getCoordinator(universityId, coordinatorId).then((value) {
-      print(value);
       _coordinatorNameController.sink.add(value);
     });
   }

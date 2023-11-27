@@ -11,7 +11,7 @@ abstract class UniversityOverviewController {
 
   void onSearchChange(String text);
   void onUniversityInfoChange(String universityId);
-  void onCoordinatorListChange(dynamic coordinatorsJson);
+  void onCoordinatorListChange(List<Coordinator> coordinatorList);
   void dispose();
 }
 
@@ -45,7 +45,14 @@ class UniversityOverviewImpl extends UniversityOverviewController {
       if (response != null) {
         var universityJson = response["data"]["university"];
 
-        onCoordinatorListChange(response["data"]["coordinators"]);
+        var coordinatorsJson = response["data"]["coordinators"];
+        List<Coordinator> coordinatorList = [];
+        for (var item in coordinatorsJson) {
+          coordinatorList.add(new Coordinator(
+              item["id"], item["name"], item["isAttendingToday"]));
+        }
+
+        onCoordinatorListChange(coordinatorList);
 
         _universityInfoController.sink.add(new University(
             universityJson["id"],
@@ -57,13 +64,7 @@ class UniversityOverviewImpl extends UniversityOverviewController {
   }
 
   @override
-  void onCoordinatorListChange(dynamic coordinatorsJson) {
-    List<Coordinator> coordinatorList = [];
-    for (var item in coordinatorsJson) {
-      coordinatorList.add(
-          new Coordinator(item["id"], item["name"], item["isAttendingToday"]));
-    }
-
+  void onCoordinatorListChange(List<Coordinator> coordinatorList) {
     _coordinatorListController.sink.add(coordinatorList);
   }
 
