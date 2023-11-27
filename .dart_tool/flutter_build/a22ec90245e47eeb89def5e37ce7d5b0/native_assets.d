@@ -1,0 +1,1 @@
+ /Users/alberto/Documents/development/dispositivosMoveis/atendimento-ao-coordenador/.dart_tool/flutter_build/a22ec90245e47eeb89def5e37ce7d5b0/native_assets.yaml: 
