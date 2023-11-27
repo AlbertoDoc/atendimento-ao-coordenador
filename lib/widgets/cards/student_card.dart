@@ -6,10 +6,7 @@ class StudentCard extends StatelessWidget {
   final int position;
   final String waitingTime;
 
-  String formatedWaitingTime;
-
-  StudentCard(
-      this.name, this.position, this.waitingTime, this.formatedWaitingTime);
+  StudentCard(this.name, this.position, this.waitingTime);
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +43,15 @@ class StudentCard extends StatelessWidget {
   }
 
   String _formatTime() {
-    formatedWaitingTime = "";
+    var formatedWaitingTime = "";
 
-    if (waitingTime.split(":")[1] != "00") {
-      formatedWaitingTime += waitingTime.split(":")[1] + "h";
-    } else if (waitingTime.split(":")[2] != "00") {
-      formatedWaitingTime += waitingTime.split(":")[2] + "min";
+    var hour = waitingTime.split(":")[1];
+    var minutes = waitingTime.split(":")[2];
+
+    if (hour != "00") {
+      formatedWaitingTime += hour + "h";
+    } else if (minutes != "00") {
+      formatedWaitingTime += minutes + "min";
     }
 
     return formatedWaitingTime;

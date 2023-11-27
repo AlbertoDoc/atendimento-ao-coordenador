@@ -62,7 +62,6 @@ class QueueImpl extends QueueController {
     });
   }
 
-  @override
   void dispose() {
     _universityInfoController.close();
     _coordinatorNameController.close();

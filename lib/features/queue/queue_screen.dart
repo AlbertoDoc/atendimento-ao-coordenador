@@ -5,7 +5,6 @@ import 'package:attend/models/student.dart';
 import 'package:attend/services/line_service.dart';
 import 'package:attend/services/queue_service.dart';
 import 'package:attend/widgets/cards/student_card.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class QueuePage extends StatefulWidget {
@@ -155,7 +154,7 @@ class _QueuePageState extends State<QueuePage> {
         builder: (context, snapshot) {
           final listStudent = snapshot.data as List<Student>;
           final listStudentWidget = listStudent.map((item) {
-            return StudentCard(item.name, item.position, item.waitingTime, "");
+            return StudentCard(item.name, item.position, item.waitingTime);
           }).toList();
           return ListView.builder(
               shrinkWrap: true,
@@ -181,7 +180,7 @@ class _QueuePageState extends State<QueuePage> {
                     side: BorderSide(color: AttendColors.unity_container)))),
             onPressed: () {
               QueueService.enterInQueue(
-                      lineId, "09018099-1ac7-4642-a0eb-07823417f70f")
+                      lineId, "e3a3bd68-c460-49ea-b19f-20ae98e766be")
                   .then((statusCode) {
                 if (statusCode == 201) {
                   _controller.onStudentListChange(
